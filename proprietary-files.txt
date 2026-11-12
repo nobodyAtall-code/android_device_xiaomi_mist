@@ -19,3 +19,19 @@ vendor/lib64/libspukeymint.so
 vendor/lib64/libspukeymintdeviceutils.so
 vendor/lib64/libspukeymintprovision.so
 vendor/lib64/libspukeymintutils.so
+
+# Curated stock HAL services, init and VINTF (verified vendor batch b5b802b)
+vendor/bin/hw/android.hardware.bluetooth@aidl-service-qti
+vendor/bin/hw/android.hardware.gatekeeper-service-qti
+vendor/bin/hw/android.hardware.gnss-aidl-service-qti
+vendor/bin/hw/android.hardware.health-service.qti
+vendor/bin/hw/android.hardware.thermal-service.qti
+vendor/etc/init/android.hardware.bluetooth@aidl-service-qti.rc
+vendor/etc/init/android.hardware.gatekeeper-service-qti.rc
+vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
+vendor/etc/init/android.hardware.health-service.qti.rc
+vendor/etc/init/android.hardware.thermal-service.qti.rc
+vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
+vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
+vendor/etc/vintf/manifest/android.hardware.thermal-service.qti.xml
+vendor/etc/vintf/manifest/bluetooth_hci.xml
