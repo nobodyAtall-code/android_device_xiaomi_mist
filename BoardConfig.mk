@@ -33,6 +33,11 @@ BOARD_INIT_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 
+# Exact physical super partition size: stock fastboot and MD5-verified raw
+# super.img agree (runs 43229081227 and 43265353383).
+# This is NOT the per-slot qti_dynamic_partitions group maximum.
+BOARD_SUPER_PARTITION_SIZE := 10200547328
+
 # Observed physical partition sizes; these are not dynamic-group sizes.
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
