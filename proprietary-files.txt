@@ -35,3 +35,7 @@ vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
 vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
 vendor/etc/vintf/manifest/android.hardware.thermal-service.qti.xml
 vendor/etc/vintf/manifest/bluetooth_hci.xml
+vendor/lib64/hw/android.hardware.bluetooth@aidl-impl-qti.so
+vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+vendor/lib64/hw/libqtigatekeeper.so
+vendor/lib64/libQSEEComAPI.so
