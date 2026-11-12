@@ -45,12 +45,15 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_DTBOIMG_PARTITION_SIZE := 25165824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 
-# Stock vendor_a is EROFS and userdata is F2FS on OS3.0.304.0.WPUMIXM.
-# Explicit image formats; not a claim of working dynamic partition packaging.
+# Stock fstab.default provides EROFS entries for these dynamic partitions
+# (with EXT4 fallback entries). Use stock-backed EROFS for initial images;
+# this does not validate super/OTA partition groups or mounting at runtime.
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
-# Stock fstab.default advertises EROFS /product; provide its image type
-# for Android 16 board_config.mk TARGET_COPY_OUT_PRODUCT validation.
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_USES_METADATA_PARTITION := true
 TARGET_USERIMAGES_USE_F2FS := true
