@@ -26,6 +26,13 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
+# Stock init_boot.img also uses Android boot header v4; stock init and
+# vendor ramdisks use LZ4-legacy. Structural validation: research workflow
+# 43266837030. This does not validate a repacked LineageOS boot chain.
+BOARD_INIT_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
+BOARD_RAMDISK_USE_LZ4 := true
+
 # Observed physical partition sizes; these are not dynamic-group sizes.
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
