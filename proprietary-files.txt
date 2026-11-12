@@ -1,0 +1,21 @@
+# Mist device proprietary manifest — incremental first stock library batch
+# Xiaomi Global OS3.0.304.0.WPUMIXM (Android 16)
+# Source names verified against stock vendor archive path inventory.
+# This is a starting manifest, not the final device/HAL set.
+# Blobs are intended for vendor/xiaomi/mist using LineageOS extract-utils.
+# Validate exact Linker/Soong dependencies and duplicates during first build.
+
+# KeyMint, Keymaster, SecureClock and SharedSecret stock 64-bit libraries
+vendor/lib64/android.hardware.security.secureclock-V1-ndk.so
+vendor/lib64/android.hardware.security.sharedsecret-V1-ndk.so
+vendor/lib64/android.hardware.security.sharedsecret-V2-ndk.so
+vendor/lib64/libkeymaster_messages.so
+vendor/lib64/libkeymasterdeviceutils.so
+vendor/lib64/libkeymasterprovision.so
+vendor/lib64/libkeymasterutils.so
+vendor/lib64/libqtikeymaster4.so
+vendor/lib64/libqtikeymint.so
+vendor/lib64/libspukeymint.so
+vendor/lib64/libspukeymintdeviceutils.so
+vendor/lib64/libspukeymintprovision.so
+vendor/lib64/libspukeymintutils.so
