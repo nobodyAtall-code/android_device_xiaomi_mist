@@ -45,3 +45,7 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # Pending: lpdump group data, AVB chain, boot/vendor_boot ramdisks, VINTF,
 # sepolicy, kernel packaging and exact OTA partition list.
+
+# Exact stock kernel payload extracted from MD5-verified Android 16 boot.img.
+# Temporary bring-up: not a verified LineageOS kernel build.
+TARGET_PREBUILT_KERNEL := device/xiaomi/mist-kernel/kernel
