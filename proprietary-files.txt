@@ -39,3 +39,11 @@ vendor/lib64/hw/android.hardware.bluetooth@aidl-impl-qti.so
 vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
 vendor/lib64/hw/libqtigatekeeper.so
 vendor/lib64/libQSEEComAPI.so
+
+# Stock Mist Power/USB HALs (review run 43526702989)
+vendor/bin/hw/android.hardware.usb-service.qti
+vendor/etc/init/android.hardware.usb-service.qti.rc
+vendor/etc/vintf/manifest/android.hardware.usb-service.qti.xml
+vendor/bin/hw/android.hardware.power-service
+vendor/etc/init/android.hardware.power-service.rc
+vendor/etc/vintf/manifest/power.xml
