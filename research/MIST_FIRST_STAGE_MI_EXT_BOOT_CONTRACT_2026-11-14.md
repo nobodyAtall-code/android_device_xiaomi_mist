@@ -37,3 +37,24 @@ The checker was added but **not executed against a live checkout** as part of th
 4. Validate signing/AVB, SELinux, VINTF and the target OTA metadata before flashing. Until those are proven, retain the verified stock prebuilt fallback and do not enable an incomplete vendor ramdisk.
 
 This report is a compatibility analysis, not a claim of successful device boot.
+
+## Stock bootconfig extraction added — targeted, no firmware re-download
+
+The existing [`inspect_mist_vendor_boot_bootconfig.py`](https://github.com/nobodyAtall-code/copilot_project/blob/main/scripts/inspect_mist_vendor_boot_bootconfig.py) reads only the **204-byte** vendor_boot v4 bootconfig at the offset identified by the original stock boot parser, under a strict built-in original image SHA256 check:
+`f0d692792cacff3026876edbd68aed5d23be7e1acef3e6028ccd5fff21ae5acb`.
+The original ramdisk has one **10,992,661-byte legacy-LZ4 fragment** (header v4, page size 4096), alongside the original 11 vendor DTB structures. No image rewrite is performed.
+
+On the user's existing Linux workspace, after the script is synced:
+
+```bash
+cd ~/android/lineage
+python3 /path/to/copilot_project/scripts/inspect_mist_vendor_boot_bootconfig.py \
+  --vendor-boot device/xiaomi/mist-kernel/vendor_boot.img \
+  --output /tmp/mist-vendor-boot-bootconfig.json
+```
+
+The script emits bootconfig keys that could affect `fstab_suffix`, hardware and boot-device selection, but does **not** claim a selected fstab merely because a key is present or absent. Additional runtime/kernel command-line and `fs_mgr` selection evidence remains necessary. An unverified image is rejected unless an explicit development override is used.
+
+**Source-backed inference:** `fstab.emmc` contains only EXT4 entries for the seven logical partitions, whereas verified stock `super` images are all EROFS. Therefore a successfully booted stock EROFS system cannot normally have mounted those partitions using the EXT4-only alternative unmodified. `fstab.default` is the more plausible actual stock path, but this is an inference rather than direct evidence of the bootloader's selector.
+
+No custom vendor_boot was constructed or made bootable by this change. Keep stock prebuilt as fallback.
