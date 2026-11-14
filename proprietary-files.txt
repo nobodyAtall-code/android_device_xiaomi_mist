@@ -78,3 +78,11 @@ vendor/etc/vintf/manifest/android.hardware.radio.config.xml
 vendor/bin/hw/audiohalservice.qti
 vendor/etc/init/audiohalservice_qti.rc
 vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
+
+# MIST_STOCK_ODM_SKU_VINTF_BATCH — original SKU selector manifests, do not flatten to manifest.xml
+odm/etc/vintf/manifest_hcesim_dsds.xml
+odm/etc/vintf/manifest_hcesim_ssss.xml
+odm/etc/vintf/manifest_hcesimese_dsds.xml
+odm/etc/vintf/manifest_hcesimese_ssss.xml
+odm/etc/vintf/manifest_nonfc_dsds.xml
+odm/etc/vintf/manifest_nonfc_ssss.xml
