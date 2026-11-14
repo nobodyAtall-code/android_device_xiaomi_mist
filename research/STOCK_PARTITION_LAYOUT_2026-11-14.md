@@ -40,3 +40,9 @@ Verified source images are not evidence of Lineage-generated images, successful 
 - SELinux policy compilation and neverallows, linker namespace resolution, source-built module ABI, VINTF compatibility, custom OTA and device boot are **not verified**.
 
 This file is an engineering source-of-truth record; it does not enable new product package installations or a firmware flash.
+
+## Staged LineageOS 23.2 offline-only BoardConfig implementation (14 November)
+
+Commit `5573208` added `MIST_ENABLE_OFFLINE_SUPER_LAYOUT=true` opt-in to `BoardConfig.mk`, limited to `userdebug` research builds. That path sets `BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions`, includes the seven normally generated Lineage partitions (`odm product system system_dlkm system_ext vendor vendor_dlkm`), and caps their *combined size* at **9,081,106,432 bytes**. This number is the original per-slot super group maximum minus all **1,108,955,136** bytes of original `mi_ext_a`; it is a **conservative experimental budget**, not the original stock group maximum.
+
+**Default normal builds remain unchanged.** This experiment does not create, preserve or migrate `mi_ext`, does not declare a working A/B OTA payload list, does not validate slot B partition layout, nor modify AVB/first-stage mount. The reserved budget alone cannot preserve `mi_ext` across slot switching. Do not flash, OTA or represent the prototype as final `BoardConfig` integration. Use only to test future build-system layout closure, after confirming no duplicate definitions from platform configuration.
