@@ -69,9 +69,12 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_DTBOIMG_PARTITION_SIZE := 25165824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 
-# Stock fstab.default provides EROFS entries for these dynamic partitions
-# (with EXT4 fallback entries). Use stock-backed EROFS for initial images;
-# this does not validate super/OTA partition groups or mounting at runtime.
+# Stock Mist's seven populated Android logical partitions are EROFS.
+# In particular, explicitly select EROFS for system.img; the other six
+# partition image filesystem types were already declared below. This aligns
+# the generated system image with the selected stock fstab.default mount.
+# Filesystem matching alone does not validate super/OTA or actual boot.
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
