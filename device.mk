@@ -4,8 +4,11 @@
 
 DEVICE_PATH := device/xiaomi/mist
 
-# Stock mist uses dynamic logical partitions in physical super.
-# Exact group/mi_ext OTA composition remains an independent engineering gate.
+# Stock Mist uses dynamic logical partitions in physical super.
+# BoardConfig.mk now declares seven standard Lineage-generated partitions,
+# explicitly excluding stock Xiaomi mi_ext. This is a build-image layout,
+# NOT proof that target-slot OTA metadata drops mi_ext or that first-stage
+# stock vendor_boot (which still references mi_ext) will work unchanged.
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Virtual A/B is present on the stock device. Additional OTA, init, kernel
