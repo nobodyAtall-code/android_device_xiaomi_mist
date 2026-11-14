@@ -66,3 +66,11 @@ vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
 vendor/bin/hw/vendor.qti.hardware.lights.service
 vendor/etc/init/vendor.qti.hardware.lights.service.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
+
+# Stock Mist RIL/audio bring-up from artifact 14095953800
+vendor/bin/hw/qcrilNrd
+vendor/bin/init.qcrild.sh
+vendor/etc/init/qcrilNrd.rc
+vendor/bin/hw/audiohalservice.qti
+vendor/etc/init/audiohalservice_qti.rc
+vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
