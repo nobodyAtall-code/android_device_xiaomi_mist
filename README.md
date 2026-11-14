@@ -14,6 +14,16 @@ Use the already SHA256-verified stock Mist prebuilt `device/xiaomi/mist-kernel/k
 - `proprietary-files.txt`: **42 verified paths matching all 42 active proprietary source files referenced by vendor `Android.bp`** (as of 14 November 2026). This closes the extraction-manifest drift for currently installed modules; it is **not** the complete stock vendor payload or runtime dependency closure.
 - No completed device init, fstab, recovery/vendorramdisk packaging, AVB chain, VINTF compatibility matrix, SEPolicy or full vendor closure.
 
+## Shared SM4450 platform reference (14 November 2026)
+
+Compared with [sm4450-development/device_xiaomi_sky, branch 16](https://github.com/sm4450-development/device_xiaomi_sky/tree/16) and [vendor_xiaomi_sky, branch 16](https://github.com/sm4450-development/vendor_xiaomi_sky/tree/16), using original mist Android 16 stock init, service and VINTF evidence.
+
+**Adopted:** common Qualcomm SM4450/parrot board feature `BOARD_USES_QCOM_HARDWARE := true` in `BoardConfig.mk`.
+
+**Not portable from Sky:** its Android 13-origin kernel 5.10, smaller 6.98 GB super, EXT4 partition layout, camera sensor calibration, HIDL audio 7.0, fingerprint daemon, ravelin device SKU and SELinux/AVB assumptions. Mist's original stock is Android 16, 6.6.118 module family, ~10.20 GB super and EROFS logical partitions.
+
+[Full 12-subsystem source comparison and actual Mist stock service paths](https://github.com/nobodyAtall-code/copilot_project/blob/main/research/mist-vs-sky-sm4450-integration-2026-11-14.md). Do not treat the cross-device comparison as implemented RIL/audio/fingerprint, VINTF, SELinux or boot-complete.
+
 ## Integration blockers — preserve evidence and order
 
 1. **Boot chain:** inspect stock `init_boot.img`, `vendor_boot.img` ramdisk entries and bootconfig; verify selected vendor DTB and DTBO overlay, stock `vendor_dlkm` / `system_dlkm` modules and exact module load order. Source: [boot-chain report](https://github.com/nobodyAtall-code/copilot_project/blob/main/research/mist-lp-boot-chain-verified-2026-11-13.md). Do not substitute arbitrary stock images in Lineage packaging without AVB and slot analysis.
