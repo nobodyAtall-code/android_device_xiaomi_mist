@@ -18,3 +18,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Preserve verified stock vendor_boot during initial bring-up.
 # Do not rebuild an incomplete vendor ramdisk from staged snapshots.
 PRODUCT_BUILD_VENDOR_BOOT_IMAGE := false
+
+
+# Core device capability declarations backed by curated Bluetooth and radio
+# service sources in vendor/xiaomi/mist. These are framework feature XMLs,
+# not HAL implementations. Do not advertise unverified camera/biometric/NFC.
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
