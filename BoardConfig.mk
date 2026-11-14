@@ -73,6 +73,11 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 
 # Exact stock kernel payload extracted from MD5-verified Android 16 boot.img.
 # Temporary bring-up: not a verified LineageOS kernel build.
+# Stock Android 16 kernel release is 6.6.118; Lineage kernel.mk expects
+# the major.minor kernel series for Qualcomm kernel version comparisons.
+# Required after enabling BOARD_USES_QCOM_HARDWARE; this does NOT enable
+# kernel source compilation or replace the verified stock prebuilt.
+TARGET_KERNEL_VERSION := 6.6
 TARGET_PREBUILT_KERNEL := device/xiaomi/mist-kernel/kernel
 
 # Exact SHA256-verified stock OS3.0.304.0.WPUMIXM vendor_boot image.
