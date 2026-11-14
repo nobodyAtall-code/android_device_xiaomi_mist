@@ -78,6 +78,18 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 # Required after enabling BOARD_USES_QCOM_HARDWARE; this does NOT enable
 # kernel source compilation or replace the verified stock prebuilt.
 TARGET_KERNEL_VERSION := 6.6
+# The real 6.6.118 kernel source is checked out at kernel/xiaomi/mist.
+# Lineage kernel.mk requires a defconfig whenever source is present.
+# gki_defconfig exists in our source tree; this is a header-only bring-up
+# baseline, NOT a verified device production kernel configuration.
+TARGET_KERNEL_SOURCE := kernel/xiaomi/mist
+TARGET_KERNEL_CONFIG := gki_defconfig
+
+# For UNOFFICIAL bring-up, continue packaging the SHA256-verified stock
+# kernel rather than silently switching to an untested source-built image.
+# LineageOS kernel.mk explicitly supports this with a warning; remove
+# TARGET_FORCE_PREBUILT_KERNEL only after the source kernel is validated.
+TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := device/xiaomi/mist-kernel/kernel
 
 # Exact SHA256-verified stock OS3.0.304.0.WPUMIXM vendor_boot image.
