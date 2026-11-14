@@ -1,0 +1,7 @@
+# Mist stock OS3.0.304.0.WPUMIXM active service paths.
+# Match first-stage vendor partition executable labels; no permissive bypass.
+# The Camera, KeyMint and TEE types come from LineageOS 23.2 platform/vendor policy.
+/vendor/bin/hw/vendor\.qti\.camera\.provider-service_64     u:object_r:hal_camera_default_exec:s0
+/vendor/bin/hw/android\.hardware\.security\.keymint-service-qti u:object_r:hal_keymint_default_exec:s0
+/vendor/bin/qseecomd                                      u:object_r:tee_exec:s0
+/vendor/bin/hw/vendor\.qti\.hardware\.qseecom@1\.0-service u:object_r:mist_qseecom_exec:s0
