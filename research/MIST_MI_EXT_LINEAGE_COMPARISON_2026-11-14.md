@@ -45,3 +45,10 @@ From independently verified [Mist complete stock research](https://github.com/no
 4. Validate original stock sepolicy and mounted paths against actual Lineage packages, never blindly copying the compiled stock policy.
 
 Do not claim that any of these references establishes Mist boot, safe flashing, or A/B OTA completion.
+
+
+## Evidence update — actual Mist contents and AOSP OTA rules
+
+After direct inspection of the **full 22-report Mist firmware artifact**, the earlier recommendation to investigate stock-preserving super as the primary path is **superseded** by [actual mi_ext inventory and AOSP behavior](MIST_MI_EXT_ACTUAL_CONTENT_AND_AOSP_OTA_2026-11-14.md). The stock `mi_ext_a` contains 150 indexed entries dominated by apps, product configuration, carrier customizations and six UI/telephony RROs, with no indexed `.so`, `.ko` or modem `.mbn` paths. This makes a clean LineageOS omission strategy *plausible and worth preferring for validation*, but not an already boot-proven fact.
+
+AOSP `update_engine` can delete dynamic partitions when reconstructing the **target** groups, but omission from a BoardConfig or a payload's group listing does not by itself guarantee immediate deletion from the active slot or a successful virtual-A/B OTA. In particular, groups **absent** from a manifest are *not updated*. The first-stage stock vendor_boot still includes original `mi_ext` nofail/bind/overlay entries even if the staged Lineage fstab excludes them. Do not copy stock-preserving Madrid's unbooted packaging as a mandatory model for Mist. Nor assume warnings can be ignored without service/overlay policy review.
