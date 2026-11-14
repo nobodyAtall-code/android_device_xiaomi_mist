@@ -58,3 +58,9 @@ The script emits bootconfig keys that could affect `fstab_suffix`, hardware and 
 **Source-backed inference:** `fstab.emmc` contains only EXT4 entries for the seven logical partitions, whereas verified stock `super` images are all EROFS. Therefore a successfully booted stock EROFS system cannot normally have mounted those partitions using the EXT4-only alternative unmodified. `fstab.default` is the more plausible actual stock path, but this is an inference rather than direct evidence of the bootloader's selector.
 
 No custom vendor_boot was constructed or made bootable by this change. Keep stock prebuilt as fallback.
+
+## Verified local bootconfig output (14 November)
+
+The device owner ran the SHA-guarded reader against their existing stock `vendor_boot.img` in `~/android/lineage`. **SHA256 exact match:** `f0d692792cacff3026876edbd68aed5d23be7e1acef3e6028ccd5fff21ae5acb`; `bootconfig_bytes=204`, `bootconfig_offset=15392768`, v4 header, single legacy-LZ4 ramdisk fragment 10,992,661 bytes. Bootconfig explicitly contains `androidboot.hardware=qcom` and **no `androidboot.fstab_suffix`**. The checker correctly reported `fstab_selected_confirmed=false`. Do not infer the fstab selected merely from absent suffix; inspect runtime `ro.boot.*`, first-stage init and bootloader/kernel cmdline when available.
+
+Next safe live device query if the device is running and ADB is authorized: `adb shell getprop ro.boot.fstab_suffix`, `adb shell getprop ro.boot.hardware`, `adb shell cat /proc/cmdline`, `adb shell cat /proc/bootconfig` and `adb shell mount`. These are read-only and distinguish actual on-device inputs from the static bootconfig. Do **not** edit vendor_boot or enable flashing from this evidence.
