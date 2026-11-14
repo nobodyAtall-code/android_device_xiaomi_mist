@@ -40,3 +40,29 @@ vendor/lib64/libQSEEComAPI.so
 vendor/bin/hw/android.hardware.power-service
 vendor/etc/init/android.hardware.power-service.rc
 vendor/etc/vintf/manifest/power.xml
+
+# Current production-installed stock services (Android.bp/mist-vendor.mk)
+# Reconciled 2026-11-14; excluded platform-owned sensors/vibrator source copies.
+
+# Security
+vendor/bin/hw/android.hardware.security.keymint-service-qti
+vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
+vendor/bin/qseecomd
+vendor/etc/init/android.hardware.security.keymint-service-qti.rc
+vendor/etc/init/qseecomd.rc
+vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
+
+# Camera
+vendor/bin/hw/vendor.qti.camera.provider-service_64
+vendor/etc/init/vendor.qti.camera.provider-service_64.rc
+vendor/etc/vintf/manifest/vendor.qti.camera.provider.xml
+
+# Display
+vendor/bin/hw/vendor.qti.hardware.display.composer-service
+vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
+
+# Lights
+vendor/bin/hw/vendor.qti.hardware.lights.service
+vendor/etc/init/vendor.qti.hardware.lights.service.rc
+vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
