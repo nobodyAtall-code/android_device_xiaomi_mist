@@ -41,34 +41,12 @@ BOARD_RAMDISK_USE_LZ4 := true
 # This is NOT the per-slot qti_dynamic_partitions group maximum.
 BOARD_SUPER_PARTITION_SIZE := 10200547328
 
-# MIST OFFLINE SUPER LAYOUT EXPERIMENT — explicit opt-in only.
-# Stock liblp: two slot groups qti_dynamic_partitions_{a,b}; each maximum
-# 10,190,061,568 bytes. Stock slot A additionally carries mi_ext_a
-# (1,108,955,136 bytes). Lineage does not currently generate mi_ext.img,
-# and the stock fstab/overlay stack references it.
-#
-# Reserve the entire stock mi_ext image allocation inside the per-slot
-# group budget for an offline-only 7-partition layout. This budget is
-# 10,190,061,568 - 1,108,955,136 = 9,081,106,432 bytes.
-#
-# It is deliberately NOT enabled by default: producing a replacement
-# super/OTA without preserving or deliberately migrating mi_ext would
-# risk an unusable slot. Do not flip this switch for flashing or OTA.
-ifeq ($(MIST_ENABLE_OFFLINE_SUPER_LAYOUT),true)
-ifneq ($(TARGET_BUILD_VARIANT),userdebug)
-$(error MIST_ENABLE_OFFLINE_SUPER_LAYOUT is limited to userdebug research builds)
-endif
-BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9081106432
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
-    odm \
-    product \
-    system \
-    system_dlkm \
-    system_ext \
-    vendor \
-    vendor_dlkm
-endif
+# Pending Lineage super/OTA group configuration: do not enable the former
+# seven-partition minus-mi_ext budget prototype. Source review shows that
+# newer Xiaomi bring-up trees may keep the original mi_ext as an explicit
+# stock partition during super image reconstruction. See research/
+# MIST_MI_EXT_LINEAGE_COMPARISON_2026-11-14.md for actual reference paths.
+# Original partition geometry and Mi-ext AVB/fstab evidence are preserved.
 
 # Observed physical partition sizes; these are not dynamic-group sizes.
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
