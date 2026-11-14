@@ -43,4 +43,3 @@ vendor/lib64/libQSEEComAPI.so
 # Stock Mist Power HAL (USB is owned by platform; duplicate stock source retained vendor-side)
 vendor/bin/hw/android.hardware.power-service
 vendor/etc/init/android.hardware.power-service.rc
-vendor/etc/vintf/manifest/power.xml
