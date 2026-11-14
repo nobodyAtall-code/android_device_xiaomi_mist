@@ -1,0 +1,31 @@
+{
+  "byte_identical_to_stock": false,
+  "files": {
+    "first_stage_ramdisk/fstab.default": {
+      "entry_count": 54,
+      "normalized_sha256": "24cb4e93c6d5355a66fc00776973511949e65fa84f6a7127ad69efface42db52",
+      "original_stock_sha256": "cfc3c5b837d6b1491126667eff591efcc23f888548bdcd5839216f630b942516"
+    },
+    "first_stage_ramdisk/fstab.emmc": {
+      "entry_count": 23,
+      "normalized_sha256": "0f21bc931d9aa715dc2fda75ea0dc4d3e65b4d721e19854468c47f17e235191c",
+      "original_stock_sha256": "17dcfd12bafcd5d2eeee55ccd362037d80dfd0cab0a1d4bdd8155e363c035a2a"
+    },
+    "lib/modules/modules.load": {
+      "entry_count": 110,
+      "normalized_sha256": "d2efb1feeb44d8e864f635302196c6bc557e5efa27c4f205f9224d23970c2e51",
+      "original_stock_sha256": "ac3171eec908648be3a68707d033f8397112f11d569026d3188f688adc540a12"
+    },
+    "lib/modules/modules.load.recovery": {
+      "entry_count": 294,
+      "normalized_sha256": "441199f9d939a84e828e4ccef6ca0a12f4b726acbf92f75b010b328aae600c22",
+      "original_stock_sha256": "e62874f8d980e57df05252c5a3e92801ccd6c050ee29d2769600b65ff3424451"
+    }
+  },
+  "installed_in_build": false,
+  "safe_to_flash": false,
+  "source_firmware": "OS3.0.304.0.WPUMIXM",
+  "source_module_reconcile_run": 43540630241,
+  "source_ramdisk_audit_run": 43540094714,
+  "source_stock_images_run": 43174896778
+}
