@@ -58,3 +58,35 @@ The stock `mi_ext` presence, both filesystem alternatives, overlay count,
 and exact `nofail` flags have been checked against parsed original firmware
 configuration. No build, device boot, signature acceptance or OTA test has
 occurred for the proposed partition omission.
+
+
+## Verified physical stock device and real mi_ext payload (previous work recovered)
+
+This supplements, and supersedes uncertainty in, the static fstab analysis above:
+
+* **Actual stock phone:** 2026-11-14 authorized ADB observations in
+  `research/MIST_FIRST_STAGE_MI_EXT_BOOT_CONTRACT_2026-11-14.md` confirm
+  `ro.boot.fstab_suffix=default`, `ro.boot.hardware=qcom`, and
+  `/dev/block/dm-15` mounted as **EROFS** at both `/mnt/vendor/mi_ext`
+  and `/mi_ext`. The default fstab path is **actually used** on this stock
+  device; do not treat `fstab.emmc` as the likely runtime path.
+* **Actual original firmware:** complete validated stock inventory from
+  [full firmware run 43579076486](https://github.com/nobodyAtall-code/copilot_project/actions/runs/43579076486)
+  artifact `14107138565` records **150 `mi_ext_a` files** and **four init
+  RCs**, no standalone ELF/shared-object or kernel-module entries. The
+  partition includes many Xiaomi/Google APKs, regional carrier overlays,
+  features, permissions and AI resources. See
+  `research/MIST_MI_EXT_ACTUAL_CONTENT_AND_AOSP_OTA_2026-11-14.md`
+  for the exact path-backed categorization. File inventory alone does not
+  establish the *contents* or whether particular scripts/overlays are needed.
+* **Migration decision:** Do **not** bulk-copy the 150 stock items into the
+  Lineage product or system partitions. Inspect the four original RC files
+  and overlay resource targets before selecting any migration. Existing
+  seven-partition image configuration remains a reasonable clean-ROM
+  hypothesis, **not** a proven boot/OTA migration.
+* **Blocking runtime fact:** The original retained `vendor_boot.img` will
+  still select `fstab.default`, with 21 `mi_ext`-based overlay attempts.
+  `nofail` avoids treating each optional mount as fatal, but cannot
+  demonstrate that services depending on that content function correctly.
+  **Do not repackage it under unchanged original signatures.**
+
