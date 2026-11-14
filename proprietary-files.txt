@@ -53,7 +53,8 @@ vendor/etc/init/qseecomd.rc
 vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
 
-# Camera
+# Camera (exact firmware helper SHA256 afbff16da5cbeaffbd6c53ded9f0b6bfed4cfc11e8da822cddb0ce357dce6399)
+vendor/bin/init.qti.cam.perfopt.sh
 vendor/bin/hw/vendor.qti.camera.provider-service_64
 vendor/etc/init/vendor.qti.camera.provider-service_64.rc
 vendor/etc/vintf/manifest/vendor.qti.camera.provider.xml
