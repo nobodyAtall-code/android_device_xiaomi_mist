@@ -28,6 +28,7 @@ vendor/etc/init/android.hardware.bluetooth@aidl-service-qti.rc
 vendor/etc/init/android.hardware.gatekeeper-service-qti.rc
 vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/init/android.hardware.thermal-service.qti.rc
+vendor/etc/vintf/manifest/android.hardware.gatekeeper-service-qti.xml
 vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
 vendor/etc/vintf/manifest/android.hardware.thermal-service.qti.xml
 vendor/etc/vintf/manifest/bluetooth_hci.xml
@@ -52,6 +53,7 @@ vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/init/qseecomd.rc
 vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
+vendor/etc/vintf/manifest/vendor.qti.hardware.qseecom@1.0-service.xml
 
 # Camera (exact firmware helper SHA256 afbff16da5cbeaffbd6c53ded9f0b6bfed4cfc11e8da822cddb0ce357dce6399)
 vendor/bin/init.qti.cam.perfopt.sh
@@ -72,6 +74,7 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
 vendor/bin/hw/qcrilNrd
 vendor/bin/init.qcrild.sh
 vendor/etc/init/qcrilNrd.rc
+vendor/etc/vintf/manifest/android.hardware.radio.config.xml
 vendor/bin/hw/audiohalservice.qti
 vendor/etc/init/audiohalservice_qti.rc
 vendor/etc/vintf/manifest/manifest_audiocorehal_default.xml
