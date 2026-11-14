@@ -19,6 +19,9 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 
 TARGET_BOARD_PLATFORM := parrot
+# SM4450/parrot Qualcomm common-board integration; cross-checked against
+# sm4450-development/device_xiaomi_sky (branch 16), not Sky-specific hardware.
+BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOOTLOADER_BOARD_NAME := mist
 TARGET_NO_BOOTLOADER := true
 
