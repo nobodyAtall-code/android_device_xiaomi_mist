@@ -5,11 +5,7 @@
 # Blobs are intended for vendor/xiaomi/mist using LineageOS extract-utils.
 # Validate exact Linker/Soong dependencies and duplicates during first build.
 
-# KeyMint, Keymaster, SecureClock and SharedSecret stock 64-bit libraries
-vendor/lib64/android.hardware.security.secureclock-V1-ndk.so
-vendor/lib64/android.hardware.security.sharedsecret-V1-ndk.so
-vendor/lib64/android.hardware.security.sharedsecret-V2-ndk.so
-vendor/lib64/libkeymaster_messages.so
+# KeyMint/Keymaster stock 64-bit libraries (platform owns SecureClock/SharedSecret AIDL and libkeymaster_messages)
 vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
