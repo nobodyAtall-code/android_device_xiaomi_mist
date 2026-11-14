@@ -5,7 +5,8 @@
 # This is a staged source file, NOT currently installed to vendor_boot.
 # Do not install until init_boot/vendor_boot ramdisk, AVB key paths,
 # fs_mgr ordering, encryption and first-stage mount behavior are validated.
-# Stock mi_ext/overlay and auxiliary firmware mounts are excluded pending review.
+# Stock mi_ext/overlay mounts remain excluded; verified auxiliary firmware
+# and removable storage mounts are staged below from original vendor_boot.
 # device mountpoint filesystem mount_flags fs_mgr_flags
 system	/system	erofs	ro	wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey:/avb/t-gsi.avbpubkey:/avb/u-gsi.avbpubkey:/avb/v-gsi.avbpubkey
 system	/system	ext4	ro,barrier=1,discard	wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey:/avb/t-gsi.avbpubkey:/avb/u-gsi.avbpubkey:/avb/v-gsi.avbpubkey
