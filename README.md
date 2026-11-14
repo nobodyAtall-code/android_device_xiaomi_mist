@@ -11,7 +11,7 @@ Use the already SHA256-verified stock Mist prebuilt `device/xiaomi/mist-kernel/k
 - `BoardConfig.mk`: stock physical boot/init_boot/vendor_boot/dtbo/recovery/super sizes, header v4, stock kernel prebuilt, initial file system types.
 - `device.mk`: virtual A/B and dynamic partition inheritance; full OTA group definition **not yet established**.
 - `lineage_mist.mk`: basic Lineage product and vendor inheritance.
-- `proprietary-files.txt`: curated starting set, **not complete**.
+- `proprietary-files.txt`: **42 verified paths matching all 42 active proprietary source files referenced by vendor `Android.bp`** (as of 14 November 2026). This closes the extraction-manifest drift for currently installed modules; it is **not** the complete stock vendor payload or runtime dependency closure.
 - No completed device init, fstab, recovery/vendorramdisk packaging, AVB chain, VINTF compatibility matrix, SEPolicy or full vendor closure.
 
 ## Integration blockers — preserve evidence and order
@@ -25,6 +25,6 @@ Use the already SHA256-verified stock Mist prebuilt `device/xiaomi/mist-kernel/k
 
 ## Build gate
 
-The local `m -j2 nothing` passed and `m -j2 bootimage` produced a parseable image using the **stock prebuilt** kernel. Neither proves a complete system, runtime linker closure, VINTF/SELinux compatibility or bootability. Do not begin a multi-hour full build or flash before source-backed integration changes are reviewed.
+The latest local `m -j2 nothing` **passed on 14 November 2026** after stock/platform sensors and vibrator install conflicts were fixed, and an earlier `m -j2 bootimage` produced a parseable image using the **stock prebuilt** kernel. Neither proves a complete system, runtime linker closure, VINTF/SELinux compatibility or bootability. Do not begin a multi-hour full build or flash before source-backed integration changes are reviewed.
 
 Research scripts, Actions workflows and temporary archives belong **only** in [copilot_project](https://github.com/nobodyAtall-code/copilot_project); this production tree keeps only reviewed source and documentation. Work only on the existing `main` branch.
