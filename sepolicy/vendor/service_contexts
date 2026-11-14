@@ -1,0 +1,2 @@
+# Stock Mist QSEECom AIDL registration.
+vendor.qti.hardware.qseecom.IQSEECom/default u:object_r:mist_qseecom_service:s0
