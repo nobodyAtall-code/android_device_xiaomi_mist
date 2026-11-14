@@ -1,0 +1,9 @@
+# Device-specific vendor QSEECom service domain. Rules beyond process
+# startup and Binder registration require real AVC evidence.
+type mist_qseecom, domain;
+type mist_qseecom_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mist_qseecom)
+binder_use(mist_qseecom)
+
+type mist_qseecom_service, service_manager_type;
+add_service(mist_qseecom, mist_qseecom_service)
