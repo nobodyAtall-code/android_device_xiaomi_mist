@@ -71,3 +71,9 @@ TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 # Exact stock kernel payload extracted from MD5-verified Android 16 boot.img.
 # Temporary bring-up: not a verified LineageOS kernel build.
 TARGET_PREBUILT_KERNEL := device/xiaomi/mist-kernel/kernel
+
+# Exact SHA256-verified stock OS3.0.304.0.WPUMIXM vendor_boot image.
+# Use untouched stock DTBs, 291 embedded modules, fstab and init rc
+# instead of creating a nonfunctional empty custom vendor ramdisk.
+# This is an initial bring-up baseline, not validated custom boot.
+BOARD_PREBUILT_VENDOR_BOOTIMAGE := device/xiaomi/mist-kernel/vendor_boot.img

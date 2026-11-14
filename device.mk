@@ -11,3 +11,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Virtual A/B is present on the stock device. Additional OTA, init, kernel
 # and HAL configuration must be sourced from mist firmware before bring-up.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
+# Preserve verified stock vendor_boot during initial bring-up.
+# Do not rebuild an incomplete vendor ramdisk from staged snapshots.
+PRODUCT_BUILD_VENDOR_BOOT_IMAGE := false
