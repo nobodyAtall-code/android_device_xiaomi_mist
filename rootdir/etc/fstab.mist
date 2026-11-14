@@ -30,7 +30,7 @@ odm	/odm	ext4	ro,barrier=1,discard	wait,slotselect,avb=vbmeta,logical,first_stag
 # clean Lineage build deliberately drops Xiaomi's mi_ext overlays.
 # These entries are staged only; they are NOT installed into vendor_boot.
 /dev/block/bootdevice/by-name/persist	/mnt/vendor/persist	ext4	noatime,nosuid,nodev,barrier=1	wait,check
-/dev/block/by-name/misc	/misc	emmc	defaults	defaults
+/dev/block/bootdevice/by-name/misc	/misc	emmc	defaults	defaults
 /devices/platform/soc/8804000.sdhci/mmc_host*	/storage/sdcard1	vfat	nosuid,nodev	wait,voldmanaged=sdcard1:auto,encryptable=footer
 /devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*	/storage/usbotg	vfat	nosuid,nodev	wait,voldmanaged=usbotg:auto
 /dev/block/bootdevice/by-name/modem	/vendor/firmware_mnt	vfat	ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0	wait,slotselect
