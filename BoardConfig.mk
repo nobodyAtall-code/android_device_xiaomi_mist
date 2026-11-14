@@ -77,3 +77,8 @@ TARGET_PREBUILT_KERNEL := device/xiaomi/mist-kernel/kernel
 # instead of creating a nonfunctional empty custom vendor ramdisk.
 # This is an initial bring-up baseline, not validated custom boot.
 BOARD_PREBUILT_VENDOR_BOOTIMAGE := device/xiaomi/mist-kernel/vendor_boot.img
+
+# Stock OS3.0.304.0.WPUMIXM DTBO, SHA256-verified.
+# Use original 22-entry overlay table with stock vendor_boot DTBs.
+# No custom overlay assembly or device boot compatibility claim.
+BOARD_PREBUILT_DTBOIMAGE := device/xiaomi/mist-kernel/dtbo.img
