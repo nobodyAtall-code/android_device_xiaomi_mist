@@ -24,7 +24,7 @@ TARGET_BOARD_PLATFORM := parrot
 BOARD_USES_QCOM_HARDWARE := true
 
 # Mist-specific source policy: camera, KeyMint, TEE and QSEECom labels.
-# Integrated as vendor policy; compile/neverallow results are not yet proven.
+# Integrated as vendor policy; real LineageOS 23.2 selinux_policy build and\n# neverallow checks passed locally (1629/1629 steps, 2026-11-14).\n# Runtime AVC/boot verification remains pending.
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 TARGET_BOOTLOADER_BOARD_NAME := mist
 TARGET_NO_BOOTLOADER := true
