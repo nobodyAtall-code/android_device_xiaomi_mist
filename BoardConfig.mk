@@ -41,12 +41,26 @@ BOARD_RAMDISK_USE_LZ4 := true
 # This is NOT the per-slot qti_dynamic_partitions group maximum.
 BOARD_SUPER_PARTITION_SIZE := 10200547328
 
-# Pending Lineage super/OTA group configuration: do not enable the former
-# seven-partition minus-mi_ext budget prototype. Source review shows that
-# newer Xiaomi bring-up trees may keep the original mi_ext as an explicit
-# stock partition during super image reconstruction. See research/
-# MIST_MI_EXT_LINEAGE_COMPARISON_2026-11-14.md for actual reference paths.
-# Original partition geometry and Mi-ext AVB/fstab evidence are preserved.
+# Verified stock liblp per-slot qti_dynamic_partitions_{a,b} maximum:
+# 10,190,061,568 bytes (3 matching metadata slots; independently checked
+# with Python and Go in copilot_project Actions run 43579076486).
+# For a clean LineageOS image layout, generate the seven Android partitions
+# below. Do NOT generate a Xiaomi mi_ext.img or include it in the build list.
+# This is the ORIGINAL per-slot group ceiling, NOT the previous incorrect
+# reduced "minus-mi_ext" estimate. Build image generation may use it, but a
+# safe OTA or flash is NOT proven: validate source/target metadata, snapshots,
+# AVB and original stock vendor_boot fstab overlays before installation.
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 10190061568
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    odm \
+    product \
+    system \
+    system_dlkm \
+    system_ext \
+    vendor \
+    vendor_dlkm
+
 
 # Observed physical partition sizes; these are not dynamic-group sizes.
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
