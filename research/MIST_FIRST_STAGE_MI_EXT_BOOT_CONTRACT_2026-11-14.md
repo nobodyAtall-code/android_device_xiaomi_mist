@@ -64,3 +64,15 @@ No custom vendor_boot was constructed or made bootable by this change. Keep stoc
 The device owner ran the SHA-guarded reader against their existing stock `vendor_boot.img` in `~/android/lineage`. **SHA256 exact match:** `f0d692792cacff3026876edbd68aed5d23be7e1acef3e6028ccd5fff21ae5acb`; `bootconfig_bytes=204`, `bootconfig_offset=15392768`, v4 header, single legacy-LZ4 ramdisk fragment 10,992,661 bytes. Bootconfig explicitly contains `androidboot.hardware=qcom` and **no `androidboot.fstab_suffix`**. The checker correctly reported `fstab_selected_confirmed=false`. Do not infer the fstab selected merely from absent suffix; inspect runtime `ro.boot.*`, first-stage init and bootloader/kernel cmdline when available.
 
 Next safe live device query if the device is running and ADB is authorized: `adb shell getprop ro.boot.fstab_suffix`, `adb shell getprop ro.boot.hardware`, `adb shell cat /proc/cmdline`, `adb shell cat /proc/bootconfig` and `adb shell mount`. These are read-only and distinguish actual on-device inputs from the static bootconfig. Do **not** edit vendor_boot or enable flashing from this evidence.
+
+## Stock physical-device runtime confirmation (14 November 2026)
+
+The device owner queried the **running physical stock Mist** using authorized ADB:
+- `getprop ro.boot.fstab_suffix` → **`default`**
+- `getprop ro.boot.hardware` → **`qcom`**
+- `mount` → `/dev/block/dm-15` mounted at **`/mnt/vendor/mi_ext`** and **`/mi_ext`** as **EROFS**, along with `/product` and `/vendor` EROFS.
+- `/proc/cmdline` and `/proc/bootconfig` were denied by the non-root shell and were **not inspected**.
+
+This supersedes earlier uncertainty: **stock runtime selects the `default` fstab suffix**, and stock `mi_ext` is actually mounted. The stock ramdisk `first_stage_ramdisk/fstab.default` therefore remains a concrete issue for a clean `mi_ext`-free Lineage build, not just a hypothetical unused alternate. This does NOT prove that a replacement ramdisk, new OTA metadata, encryption settings or AVB signing is compatible.
+
+**Next:** Build a reviewable custom vendor_boot ramdisk plan using original stock module-loading and first-stage init data, preserving the original verified vendor_boot image as a non-flash fallback. Do not install the staged `rootdir/etc/fstab.mist` as a complete replacement without reconciling the remaining stock boot/init requirements.
